@@ -1,10 +1,15 @@
 import './bootstrap';
 import '../css/app.css';
+import "primeicons/primeicons.css"; //icons
+import "primevue/resources/primevue.min.css"; //core CSS
+import "primevue/resources/themes/saga-blue/theme.css"; //theme
 
 import { createApp, h, DefineComponent } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
+import PrimeVue from 'primevue/config';
+import InputText from 'primevue/inputtext';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -15,6 +20,8 @@ createInertiaApp({
         createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue, Ziggy)
+            .use(PrimeVue)
+            .component('InputText', InputText)
             .mount(el);
     },
     progress: {
